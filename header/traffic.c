@@ -16,10 +16,10 @@ void updateFile(char *fileName, TrafficHeap tHeap) {
     FILE *fptr;
 
     if((fptr = fopen(fileName, "wb")) == NULL) {
-        printf("Error: Unable to open file");
+        printf("Error: Unable to open file\n");
     }
     else if(fwrite(tHeap.traffic, sizeof(Traffic), tHeap.lastIndex + 1, fptr) <= tHeap.lastIndex) {
-        printf("Error: Unable to add all contents to file");
+        printf("Error: Unable to add all contents to file\n");
     }
 
     fclose(fptr);
@@ -30,7 +30,7 @@ TrafficHeap getTraffic(char *fileName) {
     TrafficHeap tHeap = {.lastIndex = -1};
 
     if((fptr = fopen(fileName, "rb")) == NULL) {
-        printf("Error: Unable to open file");
+        printf("Error: Unable to open file\n");
     }
     else {
         while( 
@@ -46,6 +46,13 @@ TrafficHeap getTraffic(char *fileName) {
 
 int getPriority(Traffic traffic) {
     return traffic.type * 2 + traffic.lane;
+}
+
+
+TrafficHeap newHeap() {
+    TrafficHeap temp = {.lastIndex = -1};
+
+    return temp;
 }
 
 void insert(TrafficHeap *tHeap, Traffic temp) {

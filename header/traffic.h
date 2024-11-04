@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 #define TRAFFIC_HEADER
 
 #define MAX 50
@@ -38,6 +39,7 @@ void initFile(char *fileName);
 void updateFile(char *fileName, TrafficHeap tHeap);
 TrafficHeap getTraffic(char *fileName);
 int getPriority(Traffic traffic);
+TrafficHeap newHeap();
 void insert(TrafficHeap *tHeap, Traffic temp);
 Traffic deleteMin(TrafficHeap *tHeap);
 

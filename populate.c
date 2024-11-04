@@ -1,23 +1,23 @@
 #include "./header/traffic.h"
 
-#define FILENAME "./files/traffic.dat"
+#define FILE_NAME "./files/traffic.dat"
 
 int main() {
-    initFile(FILENAME);
+    initFile(FILE_NAME);
 
-    TrafficHeap tHeap = getTraffic(FILENAME);
-    TrafficHeap newHeap = {.lastIndex = -1};
+    TrafficHeap tHeap = getTraffic(FILE_NAME);
+    TrafficHeap nHeap = newHeap();
 
     Traffic temp;
 
     printf("%10s%10s%10s\n", "Type", "Lane", "Time");
     while(tHeap.lastIndex > -1) {
         temp = deleteMin(&tHeap);
-        insert(&newHeap, temp);
+        insert(&nHeap, temp);
         printf("%10d%10d%10d\n", temp.type, temp.lane, temp.timeInSeconds);
     }
 
-    tHeap = newHeap;
+    tHeap = nHeap;
     
     int t;
 
@@ -42,7 +42,7 @@ int main() {
 
     insert(&tHeap, temp);
 
-    updateFile(FILENAME, tHeap);
+    updateFile(FILE_NAME, tHeap);
 
     return 0;
 }
