@@ -97,3 +97,39 @@ Traffic deleteMin(TrafficHeap *tHeap) {
 
     return temp;
 }
+
+char *translateType(TrafficType type) {
+    char ret[10] = "";
+
+    switch(type) {
+        case STRAIGHT:
+            strcpy(ret, "Straight"); break;
+        case LEFT:
+            strcpy(ret, "Left"); break;
+        case RIGHT:
+            strcpy(ret, "Right"); break;
+        case PEDESTRIAN:
+            strcpy(ret, "Pedestrian");
+    }
+
+    char *temp = (char *)malloc(sizeof(char) * (strlen(ret) + 1));
+    strcpy(temp, ret);
+
+    return temp;
+}
+
+char *translateLane(TrafficLane lane) {
+    char ret[10] = "";
+
+    switch(type) {
+        case MAIN:
+            strcpy(ret, "Main"); break;
+        case DIVERSION:
+            strcpy(ret, "Diversion"); break;
+    }
+
+    char *temp = (char *)malloc(sizeof(char) * (strlen(ret) + 1));
+    strcpy(temp, ret);
+
+    return temp;
+}
