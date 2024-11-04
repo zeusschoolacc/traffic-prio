@@ -28,16 +28,28 @@ int main() {
     printf("[3] Pedestrian\n");
     printf("Choice: ");
     scanf("%d", &t);
+
+    if(t > 3 || t < 0) {
+        printf("ERROR\n");
+        return -1;
+    }
+
     temp.type = t;
 
-    printf("Enter type of lane:\n");
+    printf("\nEnter type of lane:\n");
     printf("[0] Main\n");
     printf("[1] Diversion\n");
     printf("Choice: ");
     scanf("%d", &t);
+
+    if(t > 1 || t < 0) {
+        printf("ERROR\n");
+        return -1;
+    }
+
     temp.lane = t;
 
-    printf("Enter time to complete action (in seconds): ");
+    printf("\nEnter time to complete action (in seconds): ");
     scanf("%d", &temp.timeInSeconds);
 
     insert(&tHeap, temp);

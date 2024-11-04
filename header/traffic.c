@@ -48,9 +48,14 @@ int getPriority(Traffic traffic) {
     return traffic.type * 2 + traffic.lane;
 }
 
-
 TrafficHeap newHeap() {
     TrafficHeap temp = {.lastIndex = -1};
+
+    return temp;
+}
+
+Scenarios newScenario() {
+    Scenarios temp = {.count = 0};
 
     return temp;
 }
@@ -99,7 +104,7 @@ Traffic deleteMin(TrafficHeap *tHeap) {
 }
 
 char *translateType(TrafficType type) {
-    char ret[10] = "";
+    char ret[15] = "";
 
     switch(type) {
         case STRAIGHT:
@@ -121,7 +126,7 @@ char *translateType(TrafficType type) {
 char *translateLane(TrafficLane lane) {
     char ret[10] = "";
 
-    switch(type) {
+    switch(lane) {
         case MAIN:
             strcpy(ret, "Main"); break;
         case DIVERSION:
