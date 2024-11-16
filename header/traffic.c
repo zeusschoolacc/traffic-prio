@@ -86,12 +86,12 @@ Traffic deleteMin(TrafficHeap *tHeap) {
         int parent = 0;
         int lChild = parent * 2 + 1;
         int rChild = parent * 2 + 2;
-        int child = getPriority(tHeap->traffic[lChild]) < getPriority(tHeap->traffic[rChild]) ? lChild : rChild;
+        int child = (rChild > tHeap->lastIndex || getPriority(tHeap->traffic[lChild])) < getPriority(tHeap->traffic[rChild]) ? lChild : rChild;
 
         for(
             ;
             child <= tHeap->lastIndex && getPriority(tHeap->traffic[child]) >= getPriority(temp);
-            parent = child, lChild = parent * 2 + 1, rChild = parent * 2 + 2, child = getPriority(tHeap->traffic[lChild]) < getPriority(tHeap->traffic[rChild]) ? lChild : rChild
+            parent = child, lChild = parent * 2 + 1, rChild = parent * 2 + 2, child = (rChild > tHeap->lastIndex || getPriority(tHeap->traffic[lChild])) ? lChild : rChild
         ) {
             // printf("PARENT: %d, LCHILD: %d, RCHILD: %d\n", getPriority(tHeap->traffic[parent]), getPriority(tHeap->traffic[lChild]), getPriority(tHeap->traffic[rChild]));
             tHeap->traffic[parent] = tHeap->traffic[child];
